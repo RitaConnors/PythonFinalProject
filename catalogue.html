@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block content %}
+<section class="catalogue">
+    <h2>All Books</h2>
+    {% for book in books %}
+        <div class="book-card">
+            <img src="{{ url_for('static', filename='uploads/' ~ book.filename) }}" alt="Book cover">
+            <p><strong>Genres:</strong> {{ book.genres }}</p>
+            <p><strong>Authors:</strong> {{ book.authors }}</p>
+            <p><strong>Type:</strong> {{ book.type }}</p>
+            <form action="{{ url_for('delete', filename=book.filename) }}" method="POST">
+                <button type="submit">Remove</button>
+            </form>
+        </div>
+    {% else %}
+        <p>No books yet. Add one!</p>
+    {% endfor %}
+</section>
+{% endblock %}

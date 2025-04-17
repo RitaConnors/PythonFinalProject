@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}Upload Book{% endblock %}
+
+{% block content %}
+<section>
+    <h2>Upload a New Book</h2>
+    <form id="bookForm" action="{{ url_for('upload') }}" method="POST" enctype="multipart/form-data">
+        <label for="genres">Genres:</label>
+        <input type="text" name="genres" id="genres" required>
+
+        <label for="authors">Authors:</label>
+        <input type="text" name="authors" id="authors" required>
+
+        <label for="type">Type:</label>
+        <input type="text" name="type" id="type" required>
+
+        <label for="image">Book Image:</label>
+        <input type="file" name="image" id="image" accept="image/*" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</section>
+{% endblock %}
